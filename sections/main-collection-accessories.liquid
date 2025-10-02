@@ -1,0 +1,107 @@
+{% comment %} アクセサリー独自 {% endcomment %} 
+ {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-category-list.css' | asset_url | stylesheet_tag }}
+ 
+ <style>
+/* モバイル時：3カラムに切り替え */
+.category-section {
+max-width: 1200px;
+}
+/* モバイル時：3カラムに切り替え */
+ .category-item {
+  flex: 0 0 calc((100% - 10px * 2) / 3); /* gapが4つあるので */
+  }
+  .category-list {
+  column-gap: 10px;
+}
+/* モバイル時：3カラムに切り替え */
+@media screen and (max-width: 748px) {
+ .category-item {
+    flex: 0 0 calc((100% - 5px * 2) / 3); /* gapが2つになる */
+  }
+  .category-list {
+  column-gap: 5px;
+}
+}
+@media screen and (min-width: 990px) {
+  .category-section {
+    padding:0 5rem;
+  }
+  .category-item h3{
+    font-size:1.8rem;
+}
+}
+
+</style>
+<section class="collection-section accessories-collection">
+  {% comment %} カテゴリーリストTOPで設定したコードをLiquidに置き換え {% endcomment %}
+   <div class="u-sec-wrapper">
+  <div class="category-section">
+    <div class="category-list u-flex-box">
+      <div class="category-item">
+        <a href="/collections/apparel">
+          <img src="{{ 'category_img_half_300x300.jpg' | file_url }}" alt="アパレル" loading="lazy">
+          <h3>アパレル</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/helmet">
+          <img src="{{ 'category_img_helmet_300x300.jpg' | file_url }}" alt="ヘルメット" loading="lazy">
+          <h3>ヘルメット</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/bags">
+          <img src="{{ 'category_img_bag_300x300.jpg' | file_url }}" alt="バッグ" loading="lazy">
+          <h3>バッグ</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/bike-gear">
+          <img src="{{ 'category_img_bikegear_300x300.jpg' | file_url }}" alt="BIKE GEAR" loading="lazy">
+          <h3>BIKE GEAR</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/ebike-batteries">
+          <img src="{{ 'category_img_bt_300x300.jpg' | file_url }}" alt="E-BIKEバッテリー" loading="lazy">
+          <h3>E-BIKEバッテリー</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/bike-accessories">
+          <img src="{{ 'category_img_acc_300x300.jpg' | file_url }}" alt="アクセサリー" loading="lazy">
+          <h3>アクセサリー</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/original-goods">
+          <img src="{{ 'category_img_goods_300x300.jpg' | file_url }}" alt="オリジナルグッズ" loading="lazy">
+          <h3>オリジナルグッズ</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/training">
+          <img src="{{ 'category_img_training_300x300.jpg' | file_url }}" alt="トレーニング" loading="lazy">
+          <h3>トレーニング</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/web-only">
+          <img src="{{ 'category_img_only_300x300.jpg' | file_url }}" alt="オンライン限定商品" loading="lazy">
+          <h3>オンライン限定商品</h3>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/collections/outlet">
+          <img src="{{ 'category_img_outlet_300x300.jpg' | file_url }}" alt="アウトレット" loading="lazy">
+          <h3>アウトレット</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+  {% schema %} { "name": "Main Collection", "settings": [] } {% endschema %}
+  

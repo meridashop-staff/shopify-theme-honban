@@ -1,0 +1,270 @@
+/* 静的ページ共通 */
+.page-title {
+  margin-top: 0;
+}
+
+.main-page-title {
+  margin-bottom: 3rem;
+}
+
+/*--------------------------------------------
+  追加　利用案内／バイク購入案内 #guide 
+----------------------------------------------*/
+.bnr-red a{ border:2px solid #cc0000; text-align: center; display: block; padding: 0.75em; font-size: 120%; color: #cc0000; font-weight: bold; background: #fee9e9;text-decoration: none; }
+.bnr-red a:hover{ text-decoration: underline; }
+
+.lead_h2 {
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  padding: 30px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  letter-spacing: -0.01em;
+  /* background: url("https://gigaplus.makeshop.jp/meridashop/design/img/guide_bike/bg_cart.png") 98% center no-repeat #8ec31f; */
+}
+.link-bg_green{
+  background: #8ec31f; padding:.5em .75em; display: inline-block; margin: 1em 0; font-weight: bold; color: #fff; text-align: center; text-decoration: none;
+}
+.link-bg_green:hover{ text-decoration: underline; }
+
+.col_3 {
+  overflow: hidden;
+  width: 100%;
+}
+
+.col_3 div{
+  width: 30%;
+  float: left;
+  margin-right: 5%;
+}
+
+.col_3 div:last-child{
+  margin-right: 0;
+}
+
+.col_3 div img{
+  width: 100%;
+  height: auto;
+	max-width: 230px;
+	display: block;
+	margin: 0 auto;
+}
+
+.col_3_cont {
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+.col_title_bg_gray{
+	font-size: 1.6rem;
+  color: #fff;
+  background: #333;
+  text-align: center;
+  padding: 6px 5px;
+  vertical-align: bottom;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+
+
+.btn_green {
+  margin-top: 20px;
+}
+
+.btn_green a{
+  background: #8ec31f;
+  padding: 20px;
+  font-weight: bold;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.step_list {
+	width: 100%;
+	overflow: visible;
+	display: flex;
+	flex-wrap: wrap; 
+}
+
+.step_list li{
+	display: flex;
+	align-items: center;
+	/** 以下中央揃え**/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+	font-weight: bold;
+	font-family: 'Noto Sans JP', sans-serif;
+	width:calc(50% - 15px);
+	margin-right: 15px;
+	text-align: center;
+	padding: 1%;
+	border: 4px solid #eaeaea;
+	position: relative;
+	margin-bottom: 15px;
+	overflow: visible;
+}
+
+.step_list li span{
+	position: absolute;
+	top: -1em;
+	text-align: center;
+	display: block;
+	width: 100%;
+	color: #8ec31f;
+	font-size: 2.5rem;
+	left: 0;
+}
+.step_list li:after {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: "";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(136, 183, 213, 0);
+	border-left-color: #CCC;
+	border-width: 15px;
+	margin-top: -15px;
+}
+.step_list li:last-child:after {
+  display: none;
+}
+
+.step_col {
+	overflow:hidden;
+	margin-bottom:30px;
+}
+
+.step_col h3{
+	font-size:14px;
+	padding-bottom:5px;
+	font-weight:bold;
+	color:#333;
+}
+
+.step_col img{
+	float:right;
+	padding-left:20px;
+}
+
+.step_col .note{
+	border: #b90707 dotted 1px;
+	padding:10px;
+	margin:15px 0;
+	width:395px;
+	color:#b90707;
+	background-color:#f9f5f5;
+}
+
+.main-contents-guide .title_green {
+  padding: 10px 15px 7px;
+  border: 1px dotted #aaa;
+  color: #8ec31f;
+  text-align: left;
+  background: none;
+}
+
+.mgb-3{
+	margin-bottom:3em;}
+
+	
+.main-contents-guide .info{
+	border:solid 1px #ccc;
+	padding:20px;
+	background:#efefef;
+	margin-top:12px;
+	font-size:12px;
+}
+
+.main-contents-guide .info b{
+	font-size:13px;
+}
+
+.main-contents-guide .info-alert {
+  border: solid 1px #f10;
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 12px;
+}
+.main-contents-guide .info-alert b{
+  font-size:13px;
+}
+.main-contents-guide .info-alert .info-alert-title{
+  color: #f10;
+  font-size:13px;
+  display:block;
+  text-align:center;
+}
+
+
+.page-placeholder-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.page-placeholder {
+  width: 52.5rem;
+  height: 52.5rem;
+}
+
+
+@media screen and (max-width: 748px) {
+  /*追加 利用案内／バイク購入案内 #guide*/	
+	.col_3 div{
+  width: 100%;
+  float: none;
+  margin-right: 0;
+}	
+	.col_3 div img{
+  width: 32%;
+		float: left;
+		margin-right: 2%;		
+}
+}
+@media screen and (min-width: 750px) {
+  .main-page-title {
+    margin-bottom: 4rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+
+	/*ガイドデフォ*/
+    .guide-title{
+        font-size: 18px;
+}
+    
+    .guide-text{
+        font-size: 24px;
+ }
+	
+/*追加 利用案内／バイク購入案内 #guide*/
+.step_list li{
+	width:calc(20% - 16px);
+	margin-right: 20px;
+}
+.step_list li span{
+	font-size:3.8rem;
+}
+	
+.step_list li:last-child{
+	margin-right: 0;
+}
+
+.step_list li:after {
+	border-width: 20px;
+	margin-top: -20px;
+}
+}
+

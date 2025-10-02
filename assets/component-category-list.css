@@ -1,0 +1,73 @@
+.category-section {
+    margin: 0 auto;
+    text-align:center;
+    padding:0 1.5rem;
+  max-width:1680px;
+  }
+  .category-list {
+  flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+  }
+
+  .category-list {
+  margin: 20px auto;
+  max-width:1680px;
+    gap: 20px;
+}
+
+
+.category-item {
+  flex: 0 0 calc((100% - 20px * 4) / 5); /* gapが4つあるので */
+  background: #fff;
+  text-align: center;
+}
+.category-item a{
+  display:block;
+  padding: 12px 10px;
+  text-decoration:none;
+}
+.category-item h3 {
+  margin:0;
+  font-size: 1.5rem;
+  margin-top: 10px;
+font-weight: bold;
+  text-align: center;
+}
+.category-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+/* モバイル時：3カラムに切り替え */
+@media screen and (max-width: 1280px) {
+ .category-item {
+  flex: 0 0 calc((100% - 10px * 4) / 5); /* gapが4つあるので */
+  }
+  .category-list {
+  column-gap: 10px;
+}
+}
+/* モバイル時：3カラムに切り替え */
+@media screen and (max-width: 748px) {
+ .category-item {
+    flex: 0 0 calc((100% - 5px * 2) / 3); /* gapが2つになる */
+  }
+  .category-list {
+  column-gap: 5px;
+}
+.category-item a{
+  padding: 12px 7px;
+}
+.category-item h3 {
+  font-size: 1.4rem;
+}
+}
+@media screen and (min-width: 990px) {
+  .category-section {
+    padding:0 5rem;
+  }
+  .category-item a{
+  padding: 20px;
+}
+}

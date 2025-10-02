@@ -1,0 +1,124 @@
+{% assign now = 'now' | date: '%s' %}
+
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+{{ 'swiper.min.css' | asset_url | stylesheet_tag }}
+{{ 'component-main-slider.css' | asset_url | stylesheet_tag }}
+
+<main class="swiper-area">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+
+      {% for block in section.blocks %}
+        {% assign start_at = block.settings.start_at | date: '%s' %}
+        {% assign end_at = block.settings.end_at | date: '%s' %}
+
+        {% if start_at <= now and now <= end_at %}
+          <div class="swiper-slide">
+           <a href="{{ block.settings.link }}">
+            <img src="{{ block.settings.image | image_url }}" alt="" width="800" height="500">
+            <div class="slider-spbnr_wrapper">
+              <div class="slider-spbnr_cont">
+               <h3>{{ block.settings.text | truncate: 23, '' }}</h3>
+                {% if block.settings.link != blank %}
+                  <a class="button u-button" href="{{ block.settings.link }}">詳細はこちら→</a>
+                {% endif %}
+              </div>
+            </div>
+             </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-scrollbar"></div>
+</main>
+
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mySwiper = new Swiper('.swiper', {
+    loop: true, // ループ停止
+    speed: 2000,
+    centeredSlides: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+      waitForTransition: false,
+    },
+    slidesPerView: 2, // デフォルトは2枚
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      type: 'bullets',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      750: {
+        slidesPerView: 2 // タブレット〜PC
+      },
+      0: {
+        slidesPerView: 1 // スマホ時に1枚表示
+      }
+    }
+  });
+    });
+</script>
+
+{% schema %}
+{
+  "name": "時間指定スライダー",
+  "settings": [
+    {
+    "type": "header",
+    "content": "トップページのスライダー設定用セクションです。テキストはスマホ表示用です。22文字以内を推奨します。"
+  }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "スライド",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "画像"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "テキスト"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "リンク"
+        },
+        {
+          "type": "text",
+          "id": "start_at",
+          "label": "公開開始日時（例：2025-07-02T09:00）"
+        },
+        {
+          "type": "text",
+          "id": "end_at",
+          "label": "公開終了日時（例：2025-07-05T18:00）"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "日時制御スライダー",
+      "category": "セクション"
+    }
+  ]
+}
+{% endschema %}

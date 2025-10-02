@@ -1,0 +1,158 @@
+{% comment %} ご利用ガイドテンプレート {% endcomment %}
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width page-width--1100 section-{{ section.id }}-padding u-main-cont">
+  <h1 class="main-page-title page-title h1{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} center">
+    {{ page.title | escape }}
+  </h1>
+
+<!-- ▼コンテンツ/利用案内 ▼ -->
+<p class="bnr-red"><a href="/pages/guide-bike">バイクの注文、受け取り方法について　はコチラ →</a></p>
+
+<h2>お支払について</h2>
+<p>お支払い方法は、クレジットカードでのお支払いとなります。</p>
+<div class="u-box-info">
+<h3>クレジットカード</h3>
+GMOイプシロンと提携したクレジット決済です。<br>
+発行しているカード会社に関係なく、カードに下記会社ロゴが入っていれば、ご利用可能です。<br>
+<b class="u-f-red">「一括払い」</b>もしくは<b class="u-f-red">「分割払い」</b>のお支払いがご利用いただけます。<br>
+<b>カード会社　　VISA/MASTER/Diners/American Express/JCB</b><br>
+<img src="{{ 'credit.jpg' | asset_url }}" width="276" height="58" alt="カード会社ロゴイメージ VISA/MASTER/Diners/American Express/JCB"><br>
+<span class="u-f-small">※SSLと呼ばれる暗号通信技術を使用していますので、安全にカード番号が入力できます。また、カード番号は記録を残すことなくその場でオーソリ（カードの有効性チェック）を行いますので、安心してお買い物いただけます。
+</span><br><br>
+    
+            <h3>ショッピングクレジット（WeBBy）</h3>
+          JACCSと提携したショッピングクレジットです。<br>
+          Web上の手続きだけでお申込いただける株式会社ジャックスの分割払いです。<br>
+           <b>「分割払い」</b>のお支払いがご利用いただけます。<br></span>
+          ・最長84回の分割払いに、ボーナス併用もOKです。<br>
+          ・ご購入金額が3万円以上、月々3千円以上のお支払からご利用いただけます。<br>
+          ・分割払いの手数料率：年率4.9％<br>
+          ・分割回数毎の手数料に関しては、購入お申込み時にご確認いただけます。<br><br>
+           
+
+          ■商品の発送に関して<br>
+          お客様と株式会社ジャックスとの契約成立をもって、商品の出荷手続きを行います。<br>
+          審査の結果により､ご利用いただけない場合がございます。あらかじめご了承ください。<br>
+            
+ <br>
+<!--<h3>銀行振込（前払い) </h3>
+<div class="mgb-3">
+ご注文後、弊社指定の金融機関に代金をお振り込み頂くお支払い方法です。<br>
+<span class="u-f-small">※お振込手数料は、お客様のご負担となります。</span><br>
+<b>[ ご入金期限 ]</b><br>
+ご注文受付日の翌日を1日目として、７日目までにご入金ください。<br>
+万一、ご入金期限が経過して、なおかつご入金が確認できない場合は、ご注文の取り消し処理をさせていただきます。予めご了承ください。<br>
+<span class="u-f-small">※ご入金期限を過ぎたお振込みの場合は、ご入金期限から３日以内に必ずご連絡ください。</span><br>
+<p class="info">
+<b>連絡先</b><br>
+部署名：ミヤタサイクルお客様相談室<br>
+電話番号：0465-80-0661　Mail：info-merida-shop@gear-m.co.jp
+</p><br>
+<b>[ ご注文完了からご入金確認までの流れ ]</b><br>
+ご注文完了後、ご依頼主様のメールアドレス宛に「ご注文ありがとうございました」メールを送信させていただきます。メールには「ご注文の詳細」と「ご入金額（請求総額）」「振込み先」が記載されておりますので、ご確認いただき振り込みを行ってください。入金を確認次第、「ご入金を確認いたしました」メールをご依頼主様のメールアドレス宛に送信させていただきます。<br>
+その後、出荷の準備が整い次第、商品を発送させて頂きます。
+</div>-->
+</div><!-- guide_bg -->
+
+<h2>発送方法について</h2>
+<p><span class="u-color__red">※バイク注文時につきましては<a class="u-f-underline" href="/pages/guide-bike">こちら</a>をご覧ください。</span><br>
+当社指定の配送業者にて発送いたします。<br>
+ 配送は日本国内とさせていただきます。<br>
+ 商品在庫がある場合は、ご入金確認後7日以内に発送させていただきます。<br>
+ 在庫切れ、予約商品等の場合は、入荷次第の発送とさせていただきます。</p>
+
+<h2>送料について</h2>
+<p>全国一律1,000円<br>
+商品合計（消費税込）が5,400円以上お買い上げの場合、送料無料となります。</p>
+
+<h2>商品のキャンセルについて</h2>
+<p>基本的にはお受けいたしかねますので予めご了承ください。<br>
+止むを得ずお客様の都合によるキャンセルが発生した場合、返金等にかかる手数料などはお客様負担となります。</p>
+
+<h2>納期について</h2>
+<p><span class="u-color__red">※バイク注文時につきましては<a class="u-f-underline" href="/pages/guide-bike">こちら</a>をご覧ください。</span><br>
+商品在庫がある場合は、ご入金確認後７営業日以内に発送させていただきます。<br>
+ 在庫切れ、予約商品等の場合は、入荷次第の発送とさせていただきます。</p>
+
+<h2>商品配送について</h2>
+<p>当社指定の配送業者にて発送いたします。<br>
+ 配送は日本国内とさせていただきます。
+ </p>
+
+<h2>返品について</h2>
+  <p>万一、不良品や商品違いなどがございましたら、商品到着日から７日間以内に弊社へご連絡下さい。<br>
+ 速やかに交換の手配をさせていただきます。<br>
+それ以外の理由による、お取替え、ご返品には応じることはできませんので、ご了承ください。
+<br><br>
+【TEL】 0465-80-0661（お客様相談室）　【MAIL】info-merida-shop@gear-m.co.jp<br>
+<span class="u-f-small">※未使用の場合に限ります。</span></p>
+	
+<h2>お問い合わせについて</h2>
+<p>MERIDA Shop及びMERIDA Shop取扱商品について、ご不明な点がございましたら上部メニューの[CONTACT]からお問い合わせください。<br>
+内容により数日お時間をいただく場合もございますので、予めご了承下さい。<br>
+電話でのお問い合わせは、下記宛てにお願いします。<br><br>
+<span class="u-f-small">※お電話にてお問い合わせいただいた際、お客様のお名前、ご住所、電話番号、をお伺いすることがございますが、
+お問い合わせへの対応及び社内統計処理の為のみ利用させていただきます。
+	また、お客様からのお電話は内容確認の為、録音させていただいております。</span></p>
+<!-- <p class="info-alert"><b class="info-alert-title">お客様相談室の営業時間の短縮のお知らせ</b><br>
+新型コロナウィルス感染症拡大防止の為、＜お客様相談室窓口＞につきましては、緊急事態宣言の期間中、下記の電話受付時間に短縮させていただきます。<br>
+ご迷惑をおかけ致しますが、何卒ご理解ご了承の程、お願い致します。<br><br>
+<b>電話受付時間：平日9時30分&#12316;15時30分(土・日・祝日休み)</b></p>-->
+<p class="u-box-info u-box__gray"><b>お問い合わせ先</b><br>
+部署名：メリダジャパンお客様相談室<br>
+電話番号：0465-80-0661<br>
+<br>
+電話受付時間：平日9時半&#12316;17時半（土・日・祝日休み）</p>
+
+
+
+<!-- end ▲ コンテンツend▲ -->
+</div>
+{% schema %}
+{
+  "name": "Custom Main Page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "セクションの余白設定"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "上パディング",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "下パディング",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

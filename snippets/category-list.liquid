@@ -1,0 +1,21 @@
+<div class="category-list u-flex-box">
+  {% for block in blocks %}
+    <div class="category-item">
+      {% if block.settings.link %}
+        {% assign collection_object = block.settings.link.object %}
+        <a href="{{ block.settings.link }}">
+          {% if collection_object and collection_object.metafields.custom.menu_image %}
+            <img
+              src="{{ collection_object.metafields.custom.menu_image | image_url: width: 390 }}"
+              alt="{{ block.settings.title }}"
+              loading="lazy"
+            >
+          {% endif %}
+          {% if block.settings.title %}
+            <h3>{{ block.settings.title }}</h3>
+          {% endif %}
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,248 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: 5rem;
+    }
+  }
+{%- endstyle -%}
+ <div id="store-selector-modal" class="modal" style="display:none;">
+          <div class="modal-content">
+            <!-- ステップ1 -->
+            <div class="step" id="step-1">
+              <h2>ご希望の受け取りエリアを選択してください。(複数選択可能)</h2>
+              <div id="prefecture-list" class="prefecture-tabs"></div>
+              <div id="city-list-container"></div>     
+              
+              <div class="buttons">
+                <div id="error-msg" >受け取りエリアを選択してください。</div>
+                <button class="btn-store-select" onclick="selectStoreSelection()">受取希望店舗選択へ進む →</button>
+                <button class="btn-store-select-small" onclick="closeStoreSelector()">閉じる</button>
+              </div>
+            </div>
+        
+            <!-- ステップ2 -->
+            <div class="step" id="step-2" style="display:none;">
+              <h2>受取希望店舗を選択</h2>
+              <div id="shopListContainer"></div>
+              <div class="buttons">
+                <button class="btn-store-select-small" id="backToStep1">←エリア選択へ戻る</button>
+                <button class="btn-store-select" id="completeSelection" onclick="completeSelection()">受取店舗を決定</button>
+              </div>
+            </div>
+        </div>
+ </div> 
+<div
+  class="gradient color-{{ section.settings.color_scheme }}{% if cart == empty %} is-empty{% endif %}"
+  id="main-cart-footer"
+  data-id="{{ section.id }}"
+>
+<a style="margin-top:7rem; margin-left:auto" href="" onclick="window.history.back(); return false;" class="underlined-link u-pc-990">
+        {{- 'general.continue_shopping' | t -}}
+      </a>
+  <div class="page-width-none">
+    <div class="cart__footer isolate section-{{ section.id }}-padding">
+      {%- if settings.show_cart_note -%}
+        <cart-note class="cart__note field">
+          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+          <textarea
+            class="text-area field__input"
+            name="note"
+            form="cart"
+            id="Cart-note"
+            placeholder="{{ 'sections.cart.note' | t }}"
+          >{{ cart.note }}</textarea>
+        </cart-note>
+      {%- endif -%}
+
+      <div class="cart__blocks">
+         <div id="free-shipping-message" class="shipping-message"></div>
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'subtotal' -%}
+              <div class="js-contents" {{ block.shopify_attributes }}>
+                <div>
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--position">
+                          {{- 'icon-discount.svg' | inline_asset_content -}}
+                          {{ discount.title | escape }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+               
+                <div class="totals">
+                  <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
+                  <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+                </div>
+
+                <small class="tax-note caption-large rte">
+                  {%- if cart.duties_included and cart.taxes_included -%}
+                    {%- if shop.shipping_policy.body == blank -%}
+                      {{ 'sections.cart.duties_and_taxes_included_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{
+                        'sections.cart.duties_and_taxes_included_shipping_at_checkout_with_policy_html'
+                        | t: link: shop.shipping_policy.url
+                      }}
+                    {%- endif -%}
+                  {%- elsif cart.duties_included == false and cart.taxes_included -%}
+                    {%- if shop.shipping_policy.body == blank -%}
+                      {{ 'sections.cart.taxes_included_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{
+                        'sections.cart.taxes_included_shipping_at_checkout_with_policy_html'
+                        | t: link: shop.shipping_policy.url
+                      }}
+                    {%- endif -%}
+                  {%- elsif cart.duties_included and cart.taxes_included == false -%}
+                    {%- if shop.shipping_policy.body == blank -%}
+                      {{ 'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{
+                        'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html'
+                        | t: link: shop.shipping_policy.url
+                      }}
+                    {%- endif -%}
+                  {%- elsif cart.duties_included == false and cart.taxes_included == false -%}
+                    {%- if shop.shipping_policy.body == blank -%}
+                      {{ 'sections.cart.taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{
+                        'sections.cart.taxes_at_checkout_shipping_at_checkout_with_policy_html'
+                        | t: link: shop.shipping_policy.url
+                      }}
+                    {%- endif -%}
+                  {%- endif -%}
+                </small>
+              </div>
+            {%- else -%}
+             <!------->
+           <div>
+            <button id="store-selector-button" type="button" class="button" onclick="openStoreSelector()" >
+                  受け取り店舗を選択
+               </button>
+           </div>
+            {% if cart.attributes['都道府県'] or cart.attributes['市区町村'] or cart.attributes['店舗名'] %}
+              <div class="pickup-info" id="pickup-info">
+                <input type="hidden" name="attributes[店舗名]" id="store-name" value=" {{ cart.attributes['店舗名'] }}">
+                <input type="hidden" name="attributes[住所]" id="store-address" value=" {{ cart.attributes['住所'] }}">
+                <input type="hidden" name="attributes[TEL]" id="store-tel" value="{{ cart.attributes['TEL'] }}" />
+                <h4>受け取り店舗</h4>
+                <p>店舗名: {{ cart.attributes['店舗名'] }}<br>住所: {{ cart.attributes['住所'] }}<br>TEL: {{ cart.attributes['TEL'] }}</p>
+              </div> 
+        {% endif %}  
+              <div class="cart__ctas" {{ block.shopify_attributes }}>
+                <button
+                  type="submit"
+                  id="checkout"
+                  class="cart__checkout-button button"
+                  name="checkout"
+                  {% if cart == empty %}
+                    disabled
+                  {% endif %}
+                  form="cart"
+                >
+                  {{ 'sections.cart.checkout' | t }}
+                </button>
+              </div>
+
+              {%- if additional_checkout_buttons -%}
+                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                  {{ content_for_additional_checkout_buttons }}
+                </div>
+              {%- endif -%}
+                <div id="comment-store">※商品を受けとる店舗を選択してから「購入する」ボタンを押してください。</div>
+        
+               <p><a class="link-guide" href="/pages/guide-bike">>バイクの注文方法について</a></p>
+        <p id="selected-store-display"></p>
+        <input type="hidden" name="attributes[受け取り店舗]" id="selected-store-input" />
+             
+        
+         <script>
+          // JavaScript側で fetch() する際に使用
+         window.prefectureDataUrl = '{{ "area_prefecture.json" | asset_url }}';
+         window.freeShippingThreshold = {{ settings.free_shipping_threshold }};
+         </script>        
+            
+        <!-- CSS/JS 受け取り情報 読み込み -->
+        {{ 'store-selector.css' | asset_url | stylesheet_tag }}
+        {{ 'store-selector.js' | asset_url | script_tag }}
+        <!--↑↑↑↑↑↑-->  
+          {%- endcase -%}
+        {% endfor %}
+
+        <div id="cart-errors"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },    
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

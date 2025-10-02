@@ -1,0 +1,100 @@
+{{ 'index.css' | asset_url | stylesheet_tag }}
+<style>
+  .collection-list-pickup li a{
+    padding-top: calc(360 / 473 * 100%);
+  }
+    
+      @media screen and (max-width: 989px) {
+  .collection-list-pickup li.grid__item.grid__item__full a img{
+      width: 200%;
+      margin-left:-50vw;
+  }
+}
+
+    @media screen and (min-width: 990px) {
+    .collection-list-pickup li.grid__item.grid__item__full a{
+    padding-top: calc(360 / 946 * 100%);
+  }
+  .collection-list-pickup li.grid__item.grid__item__full a img{
+      width: 100%;
+  }
+}
+
+</style>
+
+{% comment %} トップページ用のパーツ使い回し {% endcomment %}
+ <div class="collection-list-wrapper">
+    {% comment %}<h2 class="u-txt-center u-title-h2 u-f-barlow-b">h2</h2> {% endcomment %}
+    <ul class="collection-list contains-card contains-card--collection contains-card--standard grid grid--2-col-desktop grid--1-col-tablet-down collection-list--2-items collection-list-pickup" id="" role="list">
+      <li class="collection-list__item grid__item">
+      <a href="/collections/road-bike">
+ <img src="{{ 'collection_img_01.jpg' | asset_url }}" alt="ROAD BIKE" height="375" width="380" loading="lazy">
+        <div class="txt-pickup">
+          <h3 class="u-f-barlow-b card__heading">ROAD BIKE</h3>
+        <p class="u-btn u-btn-primary">MORE →</p>
+     </div>
+     </a>
+      </li>
+      <li class="collection-list__item grid__item">
+      <a href="/collections/mtb">
+ <img src="{{ 'collection_img_02.jpg' | asset_url }}" alt="MTB" height="375" width="380" loading="lazy">
+        <div class="txt-pickup">
+          <h3 class="u-f-barlow-b card__heading">MTB</h3>
+        <p class="u-btn u-btn-primary">MORE →</p>
+     </div>
+     </a>
+      </li>
+         <li class="collection-list__item grid__item grid__item__full">
+      <a href="/collections/e-bike">
+ <img src="{{ 'collection_img_03.jpg' | asset_url }}" alt="E-BIKE" height="375" width="380" loading="lazy">
+        <div class="txt-pickup">
+          <h3 class="u-f-barlow-b card__heading">E-BIKE</h3>
+        <p class="u-btn u-btn-primary">MORE →</p>
+     </div>
+     </a>
+      </li>
+      <li class="collection-list__item grid__item">
+      <a href="/collections/cross-bike">
+ <img src="{{ 'collection_img_04.jpg' | asset_url }}" alt="CROSS BIKE" height="375" width="380" loading="lazy">
+        <div class="txt-pickup">
+          <h3 class="u-f-barlow-b card__heading">CROSS BIKE</h3>
+        <p class="u-btn u-btn-primary">MORE →</p>
+     </div>
+     </a>
+      </li>
+         <li class="collection-list__item grid__item">
+      <a href="/collections/kids">
+ <img src="{{ 'collection_img_05.jpg' | asset_url }}" alt="KIDS" height="375" width="380" loading="lazy">
+        <div class="txt-pickup">
+          <h3 class="u-f-barlow-b card__heading">KIDS</h3>
+        <p class="u-btn u-btn-primary">MORE →</p>
+     </div>
+     </a>
+      </li>
+      <li class="collection-list__item grid__item">
+      <a href="/collections/limited">
+ <img src="{{ 'collection_img_06.jpg' | asset_url }}" alt="LIMITED" height="375" width="380" loading="lazy">
+        <div class="txt-pickup">
+          <h3 class="u-f-barlow-b card__heading">LIMITED</h3>
+        <p class="u-btn u-btn-primary">MORE →</p>
+     </div>
+     </a>
+      </li>
+         <li class="collection-list__item grid__item">
+      <a href="/collections/miyata">
+ <img src="{{ 'collection_img_07.jpg' | asset_url }}" alt="MIYATA" height="375" width="380" loading="lazy">
+        <div class="txt-pickup">
+          <h3 class="u-f-barlow-b card__heading">MIYATA</h3>
+        <p class="u-btn u-btn-primary">MORE →</p>
+     </div>
+     </a>
+      </li>
+    </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Main collection",
+    "settings": []
+  }
+{% endschema %}

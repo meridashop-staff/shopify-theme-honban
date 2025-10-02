@@ -1,0 +1,168 @@
+{% comment %} snippets/collection-sidebar-menu.liquidで管理 {% endcomment %}
+{{ 'component-side-categry.css' | asset_url | stylesheet_tag }}
+
+{% if linklists.sidemenu.links.size > 0 %}
+  {%- style -%}
+ .side_icon_cate_road-bike a{
+  background-image: url('{{ "icon_img_road.jpg" | asset_url }}'); 
+}
+.side_icon_cate_mtb a{
+  background-image: url('{{ "icon_img_mtb.jpg" | asset_url }}'); 
+}
+.side_icon_cate_cross-bike a{
+  background-image: url('{{ "icon_img_cross.jpg" | asset_url }}'); 
+}
+.side_icon_cate_triathlon-tt a{
+  background-image: url('{{ "icon_img_tt.jpg" | asset_url }}'); 
+}
+.side_icon_cate_e-bike a{
+  background-image: url('{{ "icon_img_e-bike.jpg" | asset_url }}'); 
+}
+.side_icon_cate_kids a{
+  background-image: url('{{ "icon_img_kids.jpg" | asset_url }}'); 
+}
+.side_icon_cate_limited a{
+  background-image: url('{{ "icon_img_limited.jpg" | asset_url }}'); 
+}
+.side_icon_cate_miyata a{
+  background-image: url('{{ "icon_img_miyata.jpg" | asset_url }}'); 
+}
+
+li[class^="side_icon_cate"] a{
+	padding-left: 60px !important;
+	background-size: auto 28px;
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+{%- endstyle -%}
+  <!-- サイドメニュー表示 -->
+  <h2 class="side-title">CATEGORY</h2>
+  <nav class="sidemenu-nav" aria-label="サイドメニュー">
+   <ul class="side-category-list">
+  {% for link in linklists.sidemenu.links %}
+    {% if link.title == 'バイク' or link.title == 'アクセサリー' %}
+      {% assign is_parent_active = link.active %}
+      {% for childlink in link.links %}
+        {% if childlink.active %}
+          {% assign is_parent_active = true %}
+        {% else %}
+          {% for grandchildlink in childlink.links %}
+            {% if grandchildlink.active %}
+              {% assign is_parent_active = true %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      <li class="side-category-item side-category-1st{% if is_parent_active %} active{% endif %}">
+        <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>{{ link.title }}</a>
+        {% if link.links.size > 0 %}
+          <ul class="side-category-child-list sidemenu-dropdown">
+            {% for childlink in link.links %}
+              {% assign is_child_active = childlink.active %}
+              {% for grandchildlink in childlink.links %}
+                {% if grandchildlink.active %}
+                  {% assign is_child_active = true %}
+                {% endif %}
+              {% endfor %}
+              <li class="{% if link.title == 'バイク' %}side_icon_cate_{{ childlink.url | split: '/collections/' | last }}{% endif %} sidemenu-child-item {% if is_child_active %} active{% endif %}">
+                <a href="{{ childlink.url }}" {% if childlink.active %}aria-current="page"{% endif %}>{{ childlink.title }}</a>
+                {% if childlink.links.size > 0 %}
+                  <ul class="sidemenu-grandchild">
+                    {% for grandchildlink in childlink.links %}
+                      <li class="sidemenu-grandchild-item{% if grandchildlink.active %} active{% endif %}">
+                        <a href="{{ grandchildlink.url }}" {% if grandchildlink.active %}aria-current="page"{% endif %}>{{ grandchildlink.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<ul class="side-category-list side-link-btn">
+  {% for link in linklists.sidemenu.links %}
+    {% unless link.title == 'バイク' or link.title == 'アクセサリー' %}
+      <li class="side-category-item">
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+    {% endunless %}
+  {% endfor %}
+</ul>
+
+  </nav>
+{% endif %}
+
+
+  <section class="side-section side-section-search">
+  <h3 class="side-category-title side-search-title">商品検索</h3>
+    {%- if settings.predictive_search_enabled -%}
+    <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
+  {%- endif -%}
+  <main-search>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+      <div class="field">
+        <input
+          class="search__input field__input"
+          id="Search-In-Template-side"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.search' | t }}"
+          {%- if settings.predictive_search_enabled -%}
+            role="combobox"
+            aria-expanded="false"
+            aria-owns="predictive-search-results"
+            aria-controls="predictive-search-results"
+            aria-haspopup="listbox"
+            aria-autocomplete="list"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+          {%- endif -%}
+        >
+        <label class="field__label" for="Search-In-Template-side">{{ 'general.search.search' | t }}</label>
+        <input name="options[prefix]" type="hidden" value="last">
+
+        {%- if settings.predictive_search_enabled -%}
+          <div class="predictive-search predictive-search--search-template" tabindex="-1" data-predictive-search>
+            {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+          </div>
+
+          <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+        {%- endif -%}
+
+        <button
+          type="reset"
+          class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+          aria-label="{{ 'general.search.reset' | t }}"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-reset.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+          <span class="svg-wrapper">
+            {{- 'icon-search.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </div>
+         <button type="submit" class="u-btn u-btn-round u-btn__black" aria-label="{{ 'general.search.search' | t }}">
+          検索する
+        </button>
+    </form>
+  </main-search>
+  {%- if settings.predictive_search_enabled -%}
+    </predictive-search>
+  {%- endif -%}
+</section>
+
+
+
+
+

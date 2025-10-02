@@ -1,0 +1,309 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "index_main_slider_QHx9pW": {
+      "type": "index-main-slider",
+      "blocks": {
+        "slide_t4Fawx": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/2025model_img.jpg",
+            "text": "NEWモデル<br>ぞくぞく登場!",
+            "link": "shopify://collections/road-bike",
+            "start_at": "2025-07-02T09:00",
+            "end_at": "2100-07-02T09:00"
+          }
+        },
+        "slide_DfbR66": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/main_240112.jpg",
+            "text": "クリアランスセール！<br>今だけ！",
+            "link": "shopify://collections/bike",
+            "start_at": "2025-07-02T09:00",
+            "end_at": "2100-07-02T09:00"
+          }
+        },
+        "slide_XrYX93": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/main_250509.jpg",
+            "text": "チームTシャツが<br>もらえるチャンス！",
+            "link": "shopify://collections/apparel",
+            "start_at": "2025-07-02T09:00",
+            "end_at": "2100-07-02T09:00"
+          }
+        }
+      },
+      "block_order": [
+        "slide_t4Fawx",
+        "slide_DfbR66",
+        "slide_XrYX93"
+      ],
+      "name": "日時制御スライダー",
+      "settings": {}
+    },
+    "index-intro-section": {
+      "type": "index-intro-section",
+      "settings": {}
+    },
+    "category_section_NNNMQL": {
+      "type": "category-section",
+      "blocks": {
+        "category_fXTAPj": {
+          "type": "category",
+          "settings": {
+            "title": "ROAD BIKE",
+            "link": "shopify://collections/road-bike"
+          }
+        },
+        "category_T3WbHr": {
+          "type": "category",
+          "settings": {
+            "title": "E-BIKE",
+            "link": "shopify://collections/e-bike"
+          }
+        },
+        "category_A4wxLm": {
+          "type": "category",
+          "settings": {
+            "title": "MTB",
+            "link": "shopify://collections/mtb"
+          }
+        },
+        "category_rTDcwn": {
+          "type": "category",
+          "settings": {
+            "title": "CROSS BIKE",
+            "link": "shopify://collections/cross-bike"
+          }
+        },
+        "category_XGXtnH": {
+          "type": "category",
+          "settings": {
+            "title": "KIDSジュニア",
+            "link": "shopify://collections/kids"
+          }
+        },
+        "category_JEXYHt": {
+          "type": "category",
+          "settings": {
+            "title": "LIMITED",
+            "link": "shopify://collections/limited"
+          }
+        }
+      },
+      "block_order": [
+        "category_fXTAPj",
+        "category_T3WbHr",
+        "category_A4wxLm",
+        "category_rTDcwn",
+        "category_XGXtnH",
+        "category_JEXYHt"
+      ],
+      "custom_css": [],
+      "name": "Category List",
+      "settings": {
+        "heading": "バイク",
+        "is_first": true
+      }
+    },
+    "category_section_UpCipw": {
+      "type": "category-section",
+      "blocks": {
+        "category_aMfUpk": {
+          "type": "category",
+          "settings": {
+            "title": "アパレル",
+            "link": "shopify://collections/apparel"
+          }
+        },
+        "category_tNUyzQ": {
+          "type": "category",
+          "settings": {
+            "title": "ヘルメット",
+            "link": "shopify://collections/helmet"
+          }
+        },
+        "category_HrBryQ": {
+          "type": "category",
+          "settings": {
+            "title": "バッグ",
+            "link": "shopify://collections/bags"
+          }
+        },
+        "category_xUExYV": {
+          "type": "category",
+          "settings": {
+            "title": "BIKE GEAR",
+            "link": "shopify://collections/bike-gear"
+          }
+        },
+        "category_k4iUtN": {
+          "type": "category",
+          "settings": {
+            "title": "E-BIKEバッテリー",
+            "link": "shopify://collections/ebike-batteries"
+          }
+        },
+        "category_F8APx7": {
+          "type": "category",
+          "settings": {
+            "title": "アクセサリー",
+            "link": "shopify://collections/bike-accessories"
+          }
+        },
+        "category_Y3fTQB": {
+          "type": "category",
+          "settings": {
+            "title": "オリジナルグッズ",
+            "link": "shopify://collections/original-goods"
+          }
+        },
+        "category_mtrYj9": {
+          "type": "category",
+          "settings": {
+            "title": "トレーニング",
+            "link": "shopify://collections/training"
+          }
+        },
+        "category_QwKedM": {
+          "type": "category",
+          "settings": {
+            "title": "オンライン限定商品",
+            "link": "shopify://collections/web-only"
+          }
+        },
+        "category_NT9MgE": {
+          "type": "category",
+          "settings": {
+            "title": "アウトレット",
+            "link": "shopify://collections/outlet"
+          }
+        }
+      },
+      "block_order": [
+        "category_aMfUpk",
+        "category_tNUyzQ",
+        "category_HrBryQ",
+        "category_xUExYV",
+        "category_k4iUtN",
+        "category_F8APx7",
+        "category_Y3fTQB",
+        "category_mtrYj9",
+        "category_QwKedM",
+        "category_NT9MgE"
+      ],
+      "name": "Category List",
+      "settings": {
+        "heading": "アクセサリー",
+        "is_first": false
+      }
+    },
+    "custom_liquid_Rzr86T": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"u-sec-wrapper link-panel-wrapper u-bg__gray\">\n<div class=\"link-panel page-width u-width-1680 u-flex-box u-flex__wrap\">\n\t\t<div class=\"link-panel-item\">\n\t\t<div class=\"link-panel-head\">\n\t\t<h5>商品が品切れ …。でもどうしても欲しい！</h5>\n\t\t<h4>予約販売 受付中!</h4>\n\t\t</div>\n\t\t<p class=\"link-pannel-btn\"><a class=\"u-btn u-btn__white u-btn-round u-btn-bdr\" href=\"/products/pre-order\">受付中の商品はこちら→</a></p>\n\t\t<p class=\"u-txt-left\">ご希望の商品が品切れの場合、予約販売にて注文を受け付けております。</p>\n\t\t</div>\n\t\t<div class=\"link-panel-item\">\n\t\t<div class=\"link-panel-head\">\n\t\t<h5>オンラインで受けられる！自転車講習受付中！</h5>\n\t\t<h4>パーソナルトレーナー</h4>\n\t\t</div>\n\t\t<p class=\"link-pannel-btn\"><a class=\"u-btn u-btn__white u-btn-round u-btn-bdr\" href=\"/products/personal-trainer\">お申し込みはこちら→</a></p>\n\t\t<p class=\"u-txt-left line\">MERIDA X BASEに通う事が難しい方へ。LINEを使い動画、メッセージのやり取りで遠隔指導する遠距離講習プランです。</p>\n\t\t</div>\n</div>\n</div>\n  {%- style -%}\n .u-txt-left.line{\n  background-image: url('{{ \"icon-line.png\" | asset_url }}'); \n}\n{%- endstyle -%}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_eNgtkD": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .concierge-wrapper {\nbackground-image: url('{{ \"index_concie_bg.png\" | asset_url }}'),url('{{ \"index_cencie_bg_sp.jpg\" | asset_url }}');\n}\n@media screen and (min-width:750px){\n  .concierge-wrapper {\nbackground-image: url('{{ \"index_concie_bg.png\" | asset_url }}'),url('{{ \"index_cencie_bg_pc.jpg\" | asset_url }}');\n}\n}\n\n</style>\n\n<div class=\"u-sec-wrapper concierge-wrapper\">\n\t<div class=\"concierge-cont page-width\">\n    <div>\n\t<h3 class=\"u-fw-bold\"><span><img src=\"{{ 'logo_black.png' | asset_url }}\" alt=\"MERIDA\" width=\"45\" height=\"28\" /></span>どのバイクを選べばいいかわからない？！<br>\n自分に合ったバイクを見つけたい！</h3>\n</div>\n<div>\n\t\t<h2 class=\"u-fw-bold\">MERIDAオンラインコンシェルジュ</h2>\n\t\t<p>元プロ選手など専門知識を持ったスタッフがZOOMなど<br>を用いて、購入サポートいたします。<br>\n自転車購入のお悩みや不安を解決して失敗のないバイク<br>ライフをお約束します。</p>\n<ul class=\"link-list\">\n\t\t\t<li><a class=\"u-btn u-btn-round u-btn__green2\" href=\"/product/concierge\">ご予約はこちら→</a></li>\n\t\t\t<li><a class=\"u-btn u-btn-round u-btn__green2\" href=\"https://www.merida.jp/lineup/hajimete/\">初めてのバイク選びはこちら→</a></li>\n\t\t</ul>\n</div>\n\t\t\n\t</div>\n\t</div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "featured_blog_LgEhjz": {
+      "type": "featured-blog",
+      "custom_css": [],
+      "settings": {
+        "blog": "campaign",
+        "post_limit": 4,
+        "heading": "キャンペーン・特集",
+        "heading_size": "h2",
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "index-pickup-bike": {
+      "type": "index-pickup-bike",
+      "settings": {}
+    },
+    "all-products": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "top-pickup-acc",
+        "products_to_show": 24,
+        "title": "PICK UP アクセサリー",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "link",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "index-bottom-section": {
+      "type": "index-bottom-section",
+      "settings": {}
+    },
+    "simple_blog_list_YHQ9Nf": {
+      "type": "simple-blog-list",
+      "settings": {
+        "blog": "info",
+        "post_limit": 3,
+        "heading": "SHOP INFO",
+        "show_view_all": true,
+        "view_all_text": "MORE →"
+      }
+    }
+  },
+  "order": [
+    "index_main_slider_QHx9pW",
+    "index-intro-section",
+    "category_section_NNNMQL",
+    "category_section_UpCipw",
+    "custom_liquid_Rzr86T",
+    "custom_liquid_eNgtkD",
+    "featured_blog_LgEhjz",
+    "index-pickup-bike",
+    "all-products",
+    "index-bottom-section",
+    "simple_blog_list_YHQ9Nf"
+  ]
+}

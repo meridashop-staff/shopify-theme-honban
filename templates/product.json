@@ -1,0 +1,147 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom[\"item-description2\"].value }}",
+            "text_style": "body"
+          }
+        },
+        "variant-picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity-selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "product-inventory": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "vendor",
+        "variant-picker",
+        "quantity-selector",
+        "buy_buttons",
+        "product-inventory"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "合わせて買いたい",
+        "heading_size": "h1",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "tagged_collection_pameec": {
+      "type": "tagged-collection",
+      "name": "タグ専用特集コレクション",
+      "settings": {
+        "collection": "bike",
+        "products_to_show": 4,
+        "title": "その他の商品",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_LExeV7": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<!-- LINK-PANEL -->\n<section class=\"link-panel-lineup\">\n    <ul>\n    <li><a href=\"https://www.merida.jp/dbook/2024_merida/book/\" target=\"_blank\">デジタルカタログを見る</a></li><!--リンク無しの時 class=\"no-link\"追加-->\n    <li><a href=\"https://www.merida.jp/shopsearch/search/\">試乗・展示車検索</a></li>\n    <li><a href=\"https://www.merida.jp/event/\">試乗会情報</a></li>\n    </ul>\n</section>\n<!-- //LINK-PANEL -->\n\n<style>\n.link-panel-lineup ul { display: table; width: 100%; padding:0;}\n.link-panel-lineup li { text-align: center; font-size: 1.1rem; font-weight: bold; display: table-cell; width: 33%; border-right: 2px solid #fff; }\n.link-panel-lineup li a { line-height: 1.2em; display: block; text-decoration: none; color: #FFF; padding: 50px 10px 10px;}\n.link-panel-lineup li { background: url(\"{{ \"icon_w_search.svg\" | asset_url }}\") no-repeat center 10px #8AC600; background-size: auto 35px;}\n.link-panel-lineup li:first-child { background-image: url(\"{{ \"icon_w_catalog.svg\" | asset_url }}\");}\n.link-panel-lineup li:last-child { background-image: url(\"{{ \"icon_w_ride.svg\" | asset_url }}\"); border-right: none;}\n.link-panel-lineup li:hover { background-color:#666;}\n\n.link-panel-lineup li.no-link { position: relative;}\n.link-panel-lineup li.no-link:after{\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\tcontent: \"\";\n\twidth: 100%;\n\theight: 100%;\n\tdisplay: block;\n\tbackground: #FFF;\n\topacity: 0.55;\n}\n.link-panel-lineup li.no-link:hover{\n\tbackground-color: #8AC600;;\n}\n@media screen and (min-width: 750px) {\n.link-panel-lineup { max-width: 1280px; margin: 0 auto; height: 76px;}\n.link-panel-lineup ul { border-collapse: separate; border-spacing: 10px 0; margin-bottom: 30px;}\n.link-panel-lineup li { border-right: none; font-size: 1.4rem; overflow: hidden;}\n.link-panel-lineup li a { padding: 30px 10px; margin-right: -10px; }\n.link-panel-lineup li { background-position: 10% center; background-size: auto 38px;}\n\t\n\t\n.link-panel-lineup.pos-fixed ul{ width: 100%; max-width: 1280px; position: fixed; z-index: 3; bottom: 0; left: auto; right: auto; padding: 0; margin: 0 auto;}\n.link-panel-lineup.pos-fixed li a { padding: 20px 10px; }\n.link-panel-lineup.pos-fixed {\n    animation-name: fadeup;\n    animation-duration: .5s;\n}\n}\n\n@keyframes fadeup {\nfrom {\n    opacity: 0;\n}\nto {\n    opacity: 1;\n}\n}\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n  const panel = document.querySelector('.link-panel-lineup');\n  const footer = document.querySelector('footer');\n\n  window.addEventListener('scroll', function () {\n    const scrollTop = window.scrollY;\n    \n    if (scrollTop > 100) {\n      const scrollHeight = document.documentElement.scrollHeight;\n      const scrollPosition = window.innerHeight + scrollTop;\n      const footHeight = footer.offsetHeight;\n\n      if (scrollHeight - scrollPosition <= footHeight) {\n        panel.classList.remove('pos-fixed');\n      } else {\n        panel.classList.add('pos-fixed');\n      }\n    } else {\n      panel.classList.remove('pos-fixed');\n    }\n  });\n});\n\n</script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "tagged_collection_pameec",
+    "custom_liquid_LExeV7"
+  ]
+}

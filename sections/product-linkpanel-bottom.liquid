@@ -1,0 +1,87 @@
+{% comment %} カスタムリキッド用ソースコピペ元 {% endcomment %}
+
+<!-- LINK-PANEL -->
+<section class="link-panel-lineup">
+    <ul>
+    <li><a href="https://www.merida.jp/dbook/2026_merida/book/" target="_blank">デジタルカタログを見る</a></li><!--リンク無しの時 class="no-link"追加-->
+    <li><a href="https://www.merida.jp/shopsearch/search/">試乗・展示車検索</a></li>
+    <li><a href="https://www.merida.jp/event/">試乗会情報</a></li>
+    </ul>
+</section>
+<!-- //LINK-PANEL -->
+
+<style>
+.link-panel-lineup ul { display: table; width: 100%; padding:0;}
+.link-panel-lineup li { text-align: center; font-size: 1.1rem; font-weight: bold; display: table-cell; width: 33%; border-right: 2px solid #fff; }
+.link-panel-lineup li a { line-height: 1.2em; display: block; text-decoration: none; color: #FFF; padding: 50px 10px 10px;}
+.link-panel-lineup li { background: url("{{ "icon_w_search.svg" | asset_url }}") no-repeat center 10px #8AC600; background-size: auto 35px;}
+.link-panel-lineup li:first-child { background-image: url("{{ "icon_w_catalog.svg" | asset_url }}");}
+.link-panel-lineup li:last-child { background-image: url("{{ "icon_w_ride.svg" | asset_url }}"); border-right: none;}
+.link-panel-lineup li:hover { background-color:#666;}
+
+.link-panel-lineup li.no-link { position: relative;}
+.link-panel-lineup li.no-link:after{
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: "";
+	width: 100%;
+	height: 100%;
+	display: block;
+	background: #FFF;
+	opacity: 0.55;
+}
+.link-panel-lineup li.no-link:hover{
+	background-color: #8AC600;;
+}
+@media screen and (min-width: 750px) {
+.link-panel-lineup { max-width: 1280px; margin: 0 auto; height: 76px;}
+.link-panel-lineup ul { border-collapse: separate; border-spacing: 10px 0; margin-bottom: 30px;}
+.link-panel-lineup li { border-right: none; font-size: 1.4rem; overflow: hidden;}
+.link-panel-lineup li a { padding: 30px 10px; margin-right: -10px; }
+.link-panel-lineup li { background-position: 10% center; background-size: auto 38px;}
+	
+	
+.link-panel-lineup.pos-fixed ul{ width: 100%; max-width: 1280px; position: fixed; z-index: 3; bottom: 0; left: auto; right: auto; padding: 0; margin: 0 auto;}
+.link-panel-lineup.pos-fixed li a { padding: 20px 10px; }
+.link-panel-lineup.pos-fixed {
+    animation-name: fadeup;
+    animation-duration: .5s;
+}
+}
+
+@keyframes fadeup {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const panel = document.querySelector('.link-panel-lineup');
+  const footer = document.querySelector('footer');
+
+  window.addEventListener('scroll', function () {
+    const scrollTop = window.scrollY;
+    
+    if (scrollTop > 100) {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollPosition = window.innerHeight + scrollTop;
+      const footHeight = footer.offsetHeight;
+
+      if (scrollHeight - scrollPosition <= footHeight) {
+        panel.classList.remove('pos-fixed');
+      } else {
+        panel.classList.add('pos-fixed');
+      }
+    } else {
+      panel.classList.remove('pos-fixed');
+    }
+  });
+});
+
+</script>

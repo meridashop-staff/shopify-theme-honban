@@ -1,0 +1,82 @@
+/* メインスライダー用　カスタム */
+main.swiper-area {
+  position: relative;
+  border-bottom:1px solid #ccc;
+  z-index: 2;
+}
+  .swiper-pagination-bullet {
+    width:10px;
+    height:10px;
+  }
+ .swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+    aspect-ratio: 8 / 5; 
+}
+ .swiper-slide a,
+  slider-spbnr_cont a{ 
+   text-decoration:none !important;
+}
+.swiper-area div:empty {
+  display: block;
+}
+.slider-spbnr_wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   margin-bottom: 46px;
+  border-bottom:1px dashed #ccc;
+}
+.slider-spbnr_wrapper h3 {
+  font-weight: bold;
+  font-size:min(7.19vw,53px);
+}
+.slider-spbnr_wrapper > div {
+  text-align: center;
+  margin-bottom:3em;
+}
+@media screen and (min-width: 750px) {
+  main.swiper-area {
+   margin-bottom:40px;
+   border-bottom:none;
+  }
+ .swiper-wrapper {
+   padding-bottom: 50px;
+}
+  .slider-spbnr_wrapper {
+    display: none;
+  }
+   .swiper-slide {
+padding:5px;
+}
+.swiper {
+  margin-left: -15vw;
+  margin-right: -15vw;
+}
+}
+
+.swiper-pagination-bullet-active {
+  background: #91C33D;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  margin-top:-40px;
+  color:#91C33D;
+}
+  @media screen and (max-width: 749px) {
+  :root {
+  --swiper-navigation-size: 22px
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color:#111;
+  text-align:center;
+  top:unset;
+  bottom:10px;
+  width: calc(var(--swiper-navigation-size)/ 22 * 27);
+  height: var(--swiper-navigation-size);
+}
+}

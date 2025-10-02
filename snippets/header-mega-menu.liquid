@@ -1,0 +1,198 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  {% if section.settings.menu.handle == 'main-menu' %}
+<!-- メインナビ -->
+<nav class="main-nav">
+  <ul class="list-menu list-menu--inline" role="list">
+    {% for link in section.settings.menu.links %}
+      <li>
+        {% comment %} バイクと、アクセサリーだけメガメニューの適用　ショップは下層があるけど除外 {% endcomment %}
+         {% if link.links != blank %}
+         {% if link.title == 'バイク' or link.title == 'アクセサリー' %}
+        <a href="#" id="HeaderMenu-{{ link.handle }}" data-mega="mega-{{ forloop.index0 }}" class="header__menu-item list-menu__item link focus-inset">
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span></a>
+         {% comment %} riseのメガメニュー<summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary> {% endcomment %}
+             {% elsif link.title == 'SHOP' %}
+            <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="toggle-btn header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {% endif %}
+        {%- else -%}
+            <!-- ショップの時 -->
+           {% if link.title == 'SHOP' %}
+            <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="toggle-btn header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+  {% else %}
+    <!-- 通常の出力 -->
+    <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+  {% endif %}
+           
+        {% endif %}    
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+
+  {%- else -%}
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}<!--子リンクがあったら-->
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+                <ul
+                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  role="list"
+                >
+                  {%- for childlink in link.links -%}
+                    {% if link.title == 'バイク' %}
+                    <!--リンク名バイクの時だけ出るコンテンツ条件検証用-->
+                    {% endif %}
+                    <li class="menu-list-{{ forloop.index }}">
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </details>
+          </header-menu>
+          <!--//子リンクがあったら-->
+        {%- else -%}
+           <!-- ショップの時 -->
+           {% if link.title == 'SHOP' %}
+            <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="toggle-btn header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+  {% else %}
+    <!-- 通常の出力 -->
+    <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+  {% endif %}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+  
+</nav>
+

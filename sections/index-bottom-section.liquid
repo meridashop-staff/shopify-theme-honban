@@ -1,0 +1,95 @@
+<style>
+    .mxb .icon_facility li { background: url("{{ 'icon_bg_circle_green.png' | asset_url }}")#88c400 no-repeat top center; background-size: 100% 100%; }
+</style>
+<iframe
+  id="inlineFrameExample"
+  title="Inline Frame Example"
+  width="100%"
+  src="https://www.merida.jp/iframe/news-ec.html" class="index-iframe">
+</iframe>
+<script>
+window.addEventListener('message', (event) => {
+    console.log('Parent: Received message:', event);
+    if (event.origin !== 'https://www.merida.jp') {
+        console.log('Parent: Invalid origin:', event.origin);
+        return;
+    }
+    if (event.data.type === 'resizeIframe') {
+        const iframe = document.getElementById('inlineFrameExample');
+        if (iframe) {
+            iframe.style.height = event.data.height + 'px';
+            console.log('Parent: Set height:', event.data.height);
+        } else {
+            console.log('Parent: iframe not found');
+        }
+    }
+});
+</script>
+<section class="sec-facilities">
+    <div class="sec-facilities-inner">
+    <h2>メリダをもっと身近に! <br class="br-sp"> お気軽にお立ち寄りください。</h2>
+  <div class="facility-cont-big mxb">
+    <a href="https://www.merida.jp/x-base/" target="_blank">
+      
+      <div class="mxb-txt">
+        <figure><img src="{{ 'facility_x-base.jpg' | asset_url }}" alt="X-BASE内観"></figure>
+        <h3><img src="{{ 'facility_x-base_logo.png' | asset_url }}" alt="MERIDA X BASE"></h3>
+       <h4>MERIDAが国内展開しているロードバイクモデル全シリーズを<br>
+『素晴らしい』富士の環境で『楽しみ』ながら『体験』!!
+</h4>
+       <ul class="icon_facility"><li>体験</li><li>レン<span>タル</span></li><!-- <li>購入</li><li>講習</li>--></ul>
+        </div>
+      {% comment %} <p>伊豆の自然やグルメを楽しみながら初心者から上級者まで多様なサイクリングルートを堪能できる国内取扱車種の全てを揃えた
+「世界最大級」施設。<br class="br-pc">お子様からプロを目指すライダーまで様々な講習会も実施しております。</p> {% endcomment %}
+    </a>
+  </div>
+      <p class="bnr-x-youtube"><a target="_blank" href="https://www.youtube.com/channel/UC_4DnnrdBtpTMbxK1ud36ug"><picture>
+    <source media="(min-width: 750px)" srcset="{{ 'bnr_x-base_youtube_pc.jpg' | asset_url }}">
+    <source media="(max-width: 748px)" srcset="{{ 'bnr_x-base_youtube_sp.jpg' | asset_url }}">
+    <img src="{{ 'bnr_x-base_youtube_sp.jpg' | asset_url }}" alt="MERIDA X BASE 公式YouTubeチャンネル インプレッション、コースの案内をはじめ、様々な内容を動画で紹介！！" width="375" height="625">
+  </picture></a></p>
+
+      </div>
+</section>
+{% comment %} 追従ボタン {% endcomment %}
+<p id="btnCon" style="right: 0px;"><span></span><a href="/products/concierge" target="_blank"><picture>
+  <source media="(max-width: 989px)" srcset="{{ 'index_btn_con_sp.png' | asset_url }}" width="116" height="72"> 
+   <img src="{{ 'index_btn_con_pc.png' | asset_url }}" width="226" height="83" alt="迷ったらまず相談！オンラインコンシェルジュ">
+    </picture></a></p>
+
+<script>
+// コンシェル追従ボタン
+window.addEventListener('scroll', function () {
+  const btnCon = document.getElementById('btnCon');
+
+  if (window.scrollY > 90) {
+    // アニメーション（CSSに依存する方法で実装）
+    btnCon.style.transition = 'right 0.2s linear';
+    btnCon.style.right = '0';
+
+    // クリックイベントは一度だけ追加
+    if (!btnCon.dataset.listenerAdded) {
+      const span = btnCon.querySelector('span');
+      span.addEventListener('click', function () {
+        btnCon.style.right = '-226px';
+        setTimeout(() => {
+          btnCon.style.display = 'none';
+        }, 200);
+      });
+      btnCon.dataset.listenerAdded = 'true';
+    }
+
+    // 再表示のために display をリセット
+    btnCon.style.display = 'block';
+  } else {
+    btnCon.style.transition = 'right 0.2s linear';
+    btnCon.style.right = '-226px';
+  }
+});
+</script>
+{% schema %}
+{
+  "name": "Index bottom Section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,57 @@
+{{ 'component-category-list.css' | asset_url | stylesheet_tag }}
+{% comment %} TOPページ/アクセサリートップで使用 {% endcomment %}
+<div class="u-sec-wrapper u-bg__gray">
+<div class="category-section">
+  {% if section.settings.is_first %}
+  <h2 class="u-txt-left u-title-h2 u-title-index-h2">CATEGORY</h2>
+  {% endif %}
+  {% if section.settings.heading %}
+    <b class="u-title-h3">{{ section.settings.heading }}</b>
+  {% endif %}
+  {% render 'category-list', blocks: section.blocks %}
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Category List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_first",
+      "label": "Is First Section",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "Category Name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Category Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category List"
+    }
+  ]
+}
+{% endschema %}

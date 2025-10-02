@@ -1,0 +1,110 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      /*padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);*/
+    }
+  }
+{%- endstyle -%}
+<script>
+
+//欧文のみ
+document.addEventListener('DOMContentLoaded', function () {
+  const nodeIterator = document.createNodeIterator(
+    document.getElementById('target'),
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode(node) {
+        return !node.parentElement.classList.contains('alphabet') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    }
+  );
+
+  const textNodes = [];
+  let currentNode;
+
+  // 一旦全テキストノードを配列に格納（DOM操作による影響を回避）
+  while (currentNode = nodeIterator.nextNode()) {
+    textNodes.push(currentNode);
+  }
+
+  // DOM操作はループ後に行う
+  for (const node of textNodes) {
+    const template = document.createElement('template');
+    template.innerHTML = node.nodeValue.replace(/(\w+)/g, '<span class="alphabet">$1</span>');
+    node.parentElement.insertBefore(template.content, node);
+    node.parentElement.removeChild(node);
+  }
+});
+
+</script>
+<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+  <div class="collection-hero__inner page-width-cllection {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    <div class="collection-hero__text-wrapper">
+      <h1 id="target" class="collection-hero__title u-section-title">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div class="collection-hero__image-container media gradient">
+        <img
+  srcset="
+    {%- if collection.image.width >= 165 -%}{{ collection.image | image_url: width: 165 }} 165w,{%- endif -%}
+    {%- if collection.image.width >= 360 -%}{{ collection.image | image_url: width: 720 }} 720w,{%- endif -%}
+    {%- if collection.image.width >= 535 -%}{{ collection.image | image_url: width: 1070 }} 1070w,{%- endif -%}
+    {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+    {%- if collection.image.width >= 2000 -%}{{ collection.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+    {{ collection.image | image_url }} {{ collection.image.width }}w
+  "
+  src="{{ collection.image | image_url: width: 1500 }}"
+  sizes="(min-width: 1355px) 1355px,
+         (min-width: 750px) calc((100vw)/2),
+         100vw"
+  alt="{{ collection.image.alt | escape }}"
+  width="{{ collection.image.width }}"
+  height="{{ collection.image.height }}"
+>
+
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

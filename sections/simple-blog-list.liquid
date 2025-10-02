@@ -1,0 +1,83 @@
+<div class="simple-blog-list section-{{ section.id }}-padding cont-reset u-sec-mg">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="section-title u-title-index-h2 u-f-barlow-b">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.blog != blank and section.settings.blog.articles_count > 0 %}
+      <ul class="blog-list">
+        {% for article in section.settings.blog.articles limit: section.settings.post_limit %}
+          <li class="blog-list__item">
+            <div class="blog-list__date">
+              {{ article.published_at | date: "%Y.%m.%d" }}
+            </div>
+             {% if article.metafields.custom.external_link %}
+               <a href="{{ article.metafields.custom.external_link | escape }}" class="blog-list__title">
+              {{ article.title }}
+            </a>
+            {% else %}
+            <a href="{{ article.url }}" class="blog-list__title">
+              {{ article.title }}
+            </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if section.settings.show_view_all and section.settings.blog != blank %}
+      <div class="blog-list__view-all">
+        <a href="{{ section.settings.blog.url }}" class="u-btn u-btn-primary u-btn-bdr">
+          {{ section.settings.view_all_text | default: 'MORE →' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "シンプルブログ一覧",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "対象ブログ"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "label": "表示記事数",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "セクション見出し",
+      "default": "最新ブログ記事"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "「もっと見る」リンクを表示",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "もっと見るのボタンテキスト",
+      "default": "もっと見る"
+    }
+  ],
+  "presets": [
+    {
+      "name": "シンプルブログ一覧",
+      "category": "ブログ"
+    }
+  ]
+}
+{% endschema %}

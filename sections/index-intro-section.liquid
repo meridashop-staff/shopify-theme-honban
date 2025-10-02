@@ -1,0 +1,243 @@
+{% comment %}日付指定スライダーは独自セクションで追加ずみ
+  /カテゴリーリスト、スニペットcategory-list.liquid,トップはテーマエディタcategory-section.liquidにて、
+  グロナビ共通で呼び出し（header.liquid内） {% endcomment %}
+  {% comment %} イントロ〜SPECAILFEATUREまでのソース、スライダーは既存のソースを移植カスタムドットナビの機能を追加。 {% endcomment %}
+  {%- style -%}
+  .index-intro-section {
+    background-image:url("{{ 'bg_intro.png' | asset_url }}"),url("{{ 'bg_intro_bottom.png' | asset_url }}");
+  }
+  #shopify-section-feature-index {
+    padding-bottom:35px;
+  }
+@media (max-width: 749px) {
+  .custom-dots {
+    display: none;
+  }
+}
+@media (min-width: 750px) {
+  #shopify-section-feature-index {
+    padding:60px 0;
+  }
+  .custom-dots {
+    display: flex;
+    justify-content: space-between;
+    gap: 3px;
+    margin: 12px auto 0;
+    width: 25%;
+    height: 4px;
+  }
+
+  .custom-dots button {
+    flex: 1;
+    height: 100%;
+    border: none;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .custom-dots button.active {
+    background-color: #333;
+  }
+}
+@media (min-width: 990px) {
+  #shopify-section-feature-index {
+    padding:80px 0 120px;
+  }
+}
+{%- endstyle -%}
+
+<div class="index-intro-section intro-cont">
+  <div div class="intro-main">
+    <div class="intro-txt">
+    {% comment %} <h1 class="u-f-barlow-b">MERIDA <br>Competitive Bike</h1> {% endcomment %}
+    <h1 class="h1-img-width"><img src="{{ 'competitive_bike.png' | asset_url }}" alt="MERIDA Competitive Bike" /></h1>
+    <p class="intro-lead u-fw-bold">美しく<br>どこへでも走っていけて、<br>そして楽しい</p>
+    </div>
+    <div class="video-wrapper">
+      <video poster="images/e_bike_main.jpg?d=2021" muted="muted" autoplay="autoplay" loop muted playsinline >
+        <source src="{{ 'movie.mp4' | file_url }}" type="video/mp4" />
+        <p>動画を再生するにはvideoタグをサポートしたブラウザが必要です。</p>
+      </video>
+      </div>
+  </div>
+   <div div class="intro-point-wrapper cont-reset">
+  <h2 class="u-fw-bold">ネットでバイクを注文</h2>
+  <h3>「公式オンラインショップ」だから実現する充実のサポート。<br class="u-pc">安心してご購入いただけます。</h3>
+  <div class="intro-point-list">
+    <div class="intro-point-cont">
+      <h4><span>充実の<br>ラインアップ</span></h4>
+      <figure><img src="{{ 'point-img-01.png' | asset_url }}" alt="Intro Image" /></figure>
+      <p>MERIDAの最新バイクを網羅した、充実のラインナップ。 お近くのショップにはないバイクもネットなら注文可能です。</p>
+      <a class="u-arrow" href="/collections/bike">バイクラインナップ<br class="u-pc">を見る</a>
+    </div>
+    <div class="intro-point-cont">
+      <h4><span>専門スタッフ<br>による<br>サポート</span></h4>
+      <figure><img src="{{ 'point-img-02.png' | asset_url }}" alt="Intro Image" /></figure>
+      <p>ご注文の前も後も、ご希望のバイクがご購入できるよう、MERIDAのスタッフによるサポートをさせていただきます。</p>
+      <a class="u-arrow" href="/products/concierge">オンライン<br class="u-pc">コンシェルジュ予約</a>
+    </div>
+    <div class="intro-point-cont">
+      <h4><span>近くのお店で<br>受け取り</span></h4>
+      <figure><img src="{{ 'point-img-03.png' | asset_url }}" alt="Intro Image" /></figure>
+      <p>バイクのお受け取りは、ご指定の正規取扱店にて、お客様に合わせた調整・完成車にしてお渡しいたします。その後のサポートも安心です。</p>
+      <a class="u-arrow" href="/pages/guide-bike">バイクの注文、<br class="u-pc">受け取り方法について</a>
+    </div>
+  </div>
+  </div>
+</div> {% comment %} intro-cont{% endcomment %}
+
+<style>
+  
+</style>
+
+
+{% comment %} ここからスライダー {% endcomment %}
+<section id="shopify-section-feature-index" class="shopify-section section">
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+<div class="color-scheme-1 isolate gradient">
+<div class="collection section-feature-index-padding" id="collection-feature-index" data-id="feature-index">
+<div class="collection__title title-wrapper title-wrapper--no-top-margin page-width title-wrapper--self-padded-tablet-down collection__title--desktop-slider">
+<h2 class="title inline-richtext h1 u-title-h2 u-title-index-h2 u-txt-left">SPECIAL <br>FEATURE</h2></div>
+
+<slider-component class="slider-mobile-gutter slider-component-desktop">
+<ul id="Slider-feature-index" data-id="feature-index" class="grid product-grid contains-card contains-card--product contains-card--standard grid--4-col-desktop grid--1-col-tablet-down slider slider--desktop slider--tablet grid--peek" role="list" aria-label="スライダー">
+ <li id="Slide-feature-index-1" class="grid__item slider__slide">
+  <div class="card-wrapper product-card-wrapper underline-links-hover"> 
+    <div class="card card--standard card--media" style="--ratio-percent: 144.0%;">
+      <div class="card__inner color-scheme-2 gradient ratio" style="--ratio-percent: 144.0%;">
+        <div class="card__media">
+            <a href="/collections/scultura"><div class="media media--transparent media--hover-effect"><img src="{{ 'index_feature_img_01.jpg' | asset_url }}" alt="SCULTURA" width="311" height="443" /></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+<li id="Slide-feature-index-2" class="grid__item slider__slide">
+  <div class="card-wrapper product-card-wrapper underline-links-hover"> 
+    <div class="card card--standard card--media" style="--ratio-percent: 144.0%;">
+      <div class="card__inner color-scheme-2 gradient ratio" style="--ratio-percent: 144.0%;">
+        <div class="card__media">
+            <a href="/collections/scultura-endurance"><div class="media media--transparent media--hover-effect"><img src="{{ 'index_feature_img_02.jpg' | asset_url }}" alt="scultura-endurance" width="311" height="443" /></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+<li id="Slide-feature-index-3" class="grid__item slider__slide">
+  <div class="card-wrapper product-card-wrapper underline-links-hover"> 
+    <div class="card card--standard card--media" style="--ratio-percent: 144.0%;">
+      <div class="card__inner color-scheme-2 gradient ratio" style="--ratio-percent: 144.0%;">
+        <div class="card__media">
+            <a href="/collections/silex"><div class="media media--transparent media--hover-effect"><img src="{{ 'index_feature_img_03.jpg' | asset_url }}" alt="SILEX" width="311" height="443" /></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+<li id="Slide-feature-index-4" class="grid__item slider__slide">
+  <div class="card-wrapper product-card-wrapper underline-links-hover"> 
+    <div class="card card--standard card--media" style="--ratio-percent: 144.0%;">
+      <div class="card__inner color-scheme-2 gradient ratio" style="--ratio-percent: 144.0%;">
+        <div class="card__media">
+            <a href="/collections/eone-sixty"><div class="media media--transparent media--hover-effect"><img src="{{ 'index_feature_img_04.jpg' | asset_url }}" alt="eONE.SIXTY" width="311" height="443" /></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+<li id="Slide-feature-index-5" class="grid__item slider__slide">
+  <div class="card-wrapper product-card-wrapper underline-links-hover"> 
+    <div class="card card--standard card--media" style="--ratio-percent: 144.0%;">
+      <div class="card__inner color-scheme-2 gradient ratio" style="--ratio-percent: 144.0%;">
+        <div class="card__media">
+            <a href="/collections/cross-bike"><div class="media media--transparent media--hover-effect"><img src="{{ 'index_feature_img_05.jpg' | asset_url }}" alt="CROSS BIKE" width="311" height="443" /></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+<li id="Slide-feature-index-6" class="grid__item slider__slide"><div class="card-wrapper product-card-wrapper underline-links-hover"> 
+    <div class="card card--standard card--media" style="--ratio-percent: 144.0%;">
+      <div class="card__inner color-scheme-2 gradient ratio" style="--ratio-percent: 144.0%;">
+        <div class="card__media">
+            <a href="/collections/kids"><div class="media media--transparent media--hover-effect"><img src="{{ 'index_feature_img_06.jpg' | asset_url }}" alt="KIDS" width="311" height="443" /></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+</ul>
+<div class="slider-buttons">
+          <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="左にスライド" aria-controls="Slider-feature-index" disabled="disabled">
+            <span class="svg-wrapper"><svg class="icon icon-caret" viewBox="0 0 10 6"><path fill="currentColor" fill-rule="evenodd" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708" clip-rule="evenodd"></path></svg>
+</span>
+          </button>
+          <div class="slider-counter caption">
+            <span class="slider-counter--current">1</span>
+            <span aria-hidden="true"> / </span>
+            <span class="visually-hidden">の</span>
+            <span class="slider-counter--total">3</span>
+          </div>
+          <button type="button" class="slider-button slider-button--next" name="next" aria-label="右にスライド" aria-controls="Slider-feature-index">
+            <span class="svg-wrapper"><svg class="icon icon-caret" viewBox="0 0 10 6"><path fill="currentColor" fill-rule="evenodd" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708" clip-rule="evenodd"></path></svg>
+</span>
+          </button>
+        </div></slider-component>
+      <div class="custom-dots" id="Dots-feature-index"></div>
+  {% comment %} SPECIAL FEATURE 専用のjs {% endcomment %}
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const isDesktop = window.innerWidth >= 750;
+  if (!isDesktop) return;
+
+  const slider = document.querySelector('#Slider-feature-index');
+  const slides = slider.querySelectorAll('.slider__slide');
+  const dotsContainer = document.getElementById('Dots-feature-index');
+
+  const totalSteps = 3; // 6枚の商品を1枚ずつずらして4枚表示で3ステップ
+
+  // ドットを生成
+  for (let i = 0; i < totalSteps; i++) {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      // スライド1枚分の幅を取得
+      const slideWidth = slides[0].clientWidth;
+      slider.scrollTo({
+        left: slideWidth * i,
+        behavior: 'smooth'
+      });
+      updateDots(i);
+    });
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateDots(activeIndex) {
+    dotsContainer.querySelectorAll('button').forEach((dot, i) => {
+      dot.classList.toggle('active', i === activeIndex);
+    });
+  }
+
+  // スクロールしたときに自動でドット更新
+  slider.addEventListener('scroll', () => {
+    const slideWidth = slides[0].clientWidth;
+    const currentIndex = Math.round(slider.scrollLeft / slideWidth);
+    updateDots(currentIndex);
+  });
+});
+</script>
+</div>
+</div>
+
+</section>
+{% comment %} ここまで {% endcomment %}
+
+
+{% schema %}
+{
+  "name": "Index Intro Section",
+  "settings": []
+}
+{% endschema %}
